@@ -15,6 +15,7 @@ Taxi24 is a startup focused on revolutionizing the transportation industry by pr
     - [Running locally](#running-locally)
   - [Testing](#testing)
   - [Usage](#usage)
+    - [Postman Collection](#postman-collection)
     - [Multi-tenancy](#multi-tenancy)
   - [License](#license)
 
@@ -87,6 +88,10 @@ $ yarn run test:cov
 ```
 
 ## Usage
+
+### Postman Collection
+
+You can import the Postman Collection from the `postman` folder to test the API endpoints, as well as the environment to be used.
 
 ### Multi-tenancy
 

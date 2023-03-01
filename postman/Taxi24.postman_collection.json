@@ -1,0 +1,762 @@
+{
+	"info": {
+		"_postman_id": "dd676104-85eb-4582-a42a-6151bb603f67",
+		"name": "Taxi24",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.environment.set(\"accessToken\", response.accessToken)\r",
+									"pm.environment.set(\"refreshToken\", response.refreshToken)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{userEmail}}\",\r\n  \"password\": \"{{userPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/auth/login",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logged In",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"{{userEmail}}\",\r\n  \"password\": \"{{userPassword}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/auth/login",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "614"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"266-GvNm58CC/kxXM4znPZj6bi9GeGk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Mar 2023 03:53:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbnVlbEBtc2FuY2hlei5kZXYiLCJuYW1lIjp7ImdpdmVuIjoiTWFudWVsIiwiZmFtaWx5IjoiU8OhbmNoZXoifSwicGVybWlzc2lvbnMiOltdLCJpYXQiOjE2Nzc2NDI4MDIsImV4cCI6MTY3NzY1MzYwMiwic3ViIjoibWFudWVsQG1zYW5jaGV6LmRldiJ9.KvTAWZ_JVMQRzY5GFanaO0yY9COgTy31KjD4a4NcW8w\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbnVlbEBtc2FuY2hlei5kZXYiLCJuYW1lIjp7ImdpdmVuIjoiTWFudWVsIiwiZmFtaWx5IjoiU8OhbmNoZXoifSwicGVybWlzc2lvbnMiOltdLCJpYXQiOjE2Nzc2NDI4MDIsImV4cCI6MTY4MDIzNDgwMiwic3ViIjoibWFudWVsQG1zYW5jaGV6LmRldiJ9.q-DoRbrcpQ0Q12PZFLLonvai03vR_gpXAfqIA4tjFwo\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api_url}}/auth/me",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Current User Info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/auth/me",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-SOOnSKB9ULhZM9n6PRjPrQDvk20\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Mar 2023 07:08:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"arjona@msanchez.dev\",\n    \"name\": {\n        \"given\": \"Ricardo\",\n        \"family\": \"Arjona\"\n    },\n    \"status\": \"active\",\n    \"permissions\": [],\n    \"tenant\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Organizations",
+			"item": [
+				{
+					"name": "Create Organization",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"delta\",\r\n  \"name\": \"Delta Movil\",\r\n  \"description\": \"Te llevamos a donde quieras\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/organizations",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"organizations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OTP",
+			"item": [
+				{
+					"name": "Request OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n  \"user\": \"{{userEmail}}\",\r\n  \"purpose\": \"user-registration\",\r\n  \"delivery\": {\r\n    \"method\": \"email\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/otp/request",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"otp",
+								"request"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OTP Requested",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n  \"user\": \"manuel@msanchez.dev\",\r\n  \"purpose\": \"user-registration\",\r\n  \"delivery\": {\r\n    \"method\": \"email\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/otp/request",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"otp",
+										"request"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "100"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"64-f8dCWng/OdUMAo/O8gPQGGDS9Cc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Feb 2023 13:12:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"purpose\": \"user-registration\",\n    \"delivery\": {\n        \"method\": \"email\"\n    },\n    \"expiresAt\": \"2023-02-28T13:17:57.203Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify OTP",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": \"{{userEmail}}\",\r\n  \"purpose\": \"user-registration\",\r\n  \"code\": \"{{userActivationCode}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/otp/verify",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"otp",
+								"verify"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OTP Verified",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"purpose\": \"user-registration\",\r\n  \"code\": \"194488\",\r\n  \"user\": \"manuel@msanchez.dev\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/otp/verify",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"otp",
+										"verify"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-ybTugXO7e8rpJnHa1uwsKrrVmgA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Mar 2023 03:04:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User activated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "DEBUG: Get User OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Debug-Key",
+								"value": "{{debugKey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/otp/debug@get-otp-for-user/{{userEmail}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"otp",
+								"debug@get-otp-for-user",
+								"{{userEmail}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "DEBUG: Get User OTP",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Debug-Key",
+										"value": "{{debugKey}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/otp/debug@get-otp-for-user/{{userEmail}}",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"otp",
+										"debug@get-otp-for-user",
+										"{{userEmail}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-jHwS1M8XwhrIIl3FMOn1m3VTNyY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Mar 2023 06:11:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"purpose\": \"user-registration\",\n    \"code\": \"785859\",\n    \"expiresAt\": \"2023-03-01T06:16:30.800Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Find Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/users",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Users Listed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/users",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "250"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fa-ks5I+nq+k5cYwNUvie8Ii2ypQQE\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Mar 2023 03:52:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"email\": \"me@msanchez.dev\",\n        \"name\": {\n            \"given\": \"David\",\n            \"family\": \"Sánchez\"\n        },\n        \"status\": \"active\",\n        \"permissions\": [],\n        \"tenant\": null\n    },\n    {\n        \"email\": \"manuel@msanchez.dev\",\n        \"name\": {\n            \"given\": \"Manuel\",\n            \"family\": \"Sánchez\"\n        },\n        \"status\": \"active\",\n        \"permissions\": [],\n        \"tenant\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{userEmail}}\",\r\n  \"password\": \"{{userPassword}}\",\r\n  \"name\": {\r\n    \"given\": \"Ricardo\",\r\n    \"family\": \"Arjona\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/users",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Created User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"manuel@msanchez.dev\",\r\n  \"password\": \"Welc0me.\",\r\n  \"name\": {\r\n    \"given\": \"Manuel\",\r\n    \"family\": \"Sánchez\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/users",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "302"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12e-zm6wobXUOSBZkwzA/lNcXArb8bg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Feb 2023 12:29:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"password\": \"Welc0me.\",\n    \"email\": \"manuel@msanchez.dev\",\n    \"name\": {\n        \"given\": \"Manuel\",\n        \"family\": \"Sánchez\",\n        \"_id\": \"63fdf3a1416a3337d71c2e36\"\n    },\n    \"status\": \"inactive\",\n    \"permissions\": [],\n    \"tenant\": null,\n    \"_id\": \"63fdf3a1416a3337d71c2e35\",\n    \"createdAt\": \"2023-02-28T12:29:21.236Z\",\n    \"updatedAt\": \"2023-02-28T12:29:21.236Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Check Tenant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/tenant",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"tenant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tenant By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/tenant/delta",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"tenant",
+						"delta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.upsert(`Host: ${pm.environment.get(\"tenant\")}.taxi24.local`)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
