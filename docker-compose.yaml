@@ -1,0 +1,25 @@
+version: '3'
+services:
+  api:
+    image: ghcr.io/msanchezdev/taxi24
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongo
+    env_file:
+      - .env.compose
+
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - taxi24-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: taxi24
+      MONGO_INITDB_ROOT_PASSWORD: taxi24data
+      MONGO_INITDB_DATABASE: taxi24
+
+volumes:
+  taxi24-data:
